@@ -5,6 +5,7 @@ Maintainer: Matthew Harm Bekkema <id@mbekkema.name>
 Build-Depends: debhelper (>= 11),
                dh-golang,
                golang-any,
+               golang-bazil-fuse-dev,
 Standards-Version: 4.1.3
 XS-Go-Import-Path: github.com/keybase/client
 Homepage: <insert the upstream URL, if relevant>

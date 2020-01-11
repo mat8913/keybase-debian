@@ -9,6 +9,7 @@ Files-Excluded:
     packaging
     protocol
     pvl-tools
+    go/vendor/bazil.org/fuse
 
 Files: *
 Copyright: <years> <put author's name and email here>
