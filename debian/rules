@@ -2,6 +2,7 @@
 
 export DH_OPTIONS
 
+BUILDTAGS := production
 export DH_GOLANG_BUILDPKG := github.com/keybase/client/go/keybase \
                              github.com/keybase/client/go/kbnm \
                              github.com/keybase/client/go/kbfs/kbfsfuse \
@@ -9,3 +10,6 @@ export DH_GOLANG_BUILDPKG := github.com/keybase/client/go/keybase \
 
 %:
 	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
+
+override_dh_auto_build:
+	dh_auto_build -v -- -tags "$(BUILDTAGS)"
