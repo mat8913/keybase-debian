@@ -1,6 +1,14 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: keybase
 Source: <url://example.com>
+Files-Excluded:
+    browser
+    git-hooks
+    media
+    osx
+    packaging
+    protocol
+    pvl-tools
 
 Files: *
 Copyright: <years> <put author's name and email here>
