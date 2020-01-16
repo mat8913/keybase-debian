@@ -2,3 +2,4 @@ usr/bin/keybase
 usr/bin/kbnm
 usr/bin/kbfsfuse
 usr/bin/git-remote-keybase
+debian/apparmor/usr.bin.keybase    /etc/apparmor.d

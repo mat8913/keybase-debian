@@ -16,3 +16,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp -- --no-source
+
+override_dh_install:
+	dh_install
+	dh_apparmor --profile-name=usr.bin.keybase -pkeybase
