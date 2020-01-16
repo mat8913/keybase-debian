@@ -1,0 +1,43 @@
+# vim:syntax=apparmor
+
+#include <tunables/global>
+
+/usr/bin/kbfsfuse {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  @{HOME}/.cache/                      w,
+  @{HOME}/.cache/keybase/              rw,
+  @{HOME}/.cache/keybase/**            rw,
+
+  @{HOME}/.config/                     w,
+  @{HOME}/.config/keybase/             rw,
+  @{HOME}/.config/keybase/**           rwk,
+
+  @{HOME}/.local/                      w,
+  @{HOME}/.local/share/                w,
+  @{HOME}/.local/share/keybase/        rw,
+  @{HOME}/.local/share/keybase/**      rwk,
+
+  /bin/fusermount                      Cx -> fusermount,
+  /dev/fuse                            rw,
+
+  profile fusermount {
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+
+    /bin/fusermount                      r,
+    /etc/fuse.conf                       r,
+    @{PROC}/@{pid}/mounts                r,
+    /dev/fuse                            rw,
+
+    @{HOME}/.config/keybase/kbfs/        r,
+    mount fstype=fuse /dev/fuse -> /home/*/.config/keybase/kbfs/,    # Using @{HOME} here doesn't
+    umount /home/*/.config/keybase/kbfs/,                            # work for some reason.
+    capability sys_admin,
+    capability dac_read_search,
+  }
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.bin.kbfsfuse>
+}
