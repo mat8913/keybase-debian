@@ -3,6 +3,7 @@ Section: unknown
 Priority: optional
 Maintainer: Matthew Harm Bekkema <id@mbekkema.name>
 Build-Depends: debhelper (>= 11),
+               dh-apparmor,
                dh-golang,
                golang-any,
                golang-bazil-fuse-dev,
@@ -15,5 +16,6 @@ Homepage: <insert the upstream URL, if relevant>
 Package: keybase
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: apparmor
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
