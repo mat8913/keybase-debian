@@ -1,0 +1,28 @@
+# vim:syntax=apparmor
+
+#include <tunables/global>
+
+/usr/bin/git-remote-keybase {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  @{HOME}/.cache/                      w,
+  @{HOME}/.cache/keybase/              rw,
+  @{HOME}/.cache/keybase/**            rw,
+
+  @{HOME}/.config/                     w,
+  @{HOME}/.config/keybase/             rw,
+  @{HOME}/.config/keybase/**           rwk,
+
+  @{HOME}/.local/                      w,
+  @{HOME}/.local/share/                w,
+  @{HOME}/.local/share/keybase/        rw,
+  @{HOME}/.local/share/keybase/**      rwk,
+
+  /**/.git/**                          rw,
+
+  /usr/lib/git-core/git                ix,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.bin.git-remote-keybase>
+}
