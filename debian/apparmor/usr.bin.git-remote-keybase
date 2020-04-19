@@ -19,6 +19,8 @@
   @{HOME}/.local/share/keybase/        rw,
   @{HOME}/.local/share/keybase/**      rwk,
 
+  @{HOME}/.config/git/config           r,
+
   /**/.git/**                          rw,
 
   /usr/lib/git-core/git                ix,
