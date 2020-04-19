@@ -8,6 +8,9 @@
 
   /dev/tty                             rw,
 
+  /run/user/@{uid}/keybase/            rw,
+  /run/user/@{uid}/keybase/**          rwk,
+
   @{HOME}/.cache/                      w,
   @{HOME}/.cache/keybase/              rw,
   @{HOME}/.cache/keybase/**            rw,
